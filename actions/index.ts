@@ -36,8 +36,8 @@ export const getTopHacks = async () => {
         disLikes: true,
       },
       orderBy: {
-        Likes: {
-          _count: "desc",
+        disLikes: {
+          _count: "asc",
         },
       },
       

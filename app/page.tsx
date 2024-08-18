@@ -52,7 +52,7 @@ export default async function Home() {
           {topHacks ? (
             <div className="flex flex-col gap-y-4 mt-5">
               {topHacks.map((hack, key) => (
-                <Card id={hack.id}>
+                <Card id={hack.id} key={key}>
                   <CardContent className="flex pt-4 items-center gap-x-2 px-6 justify-between">
                     <div className="flex items-center gap-x-2 text-lg">
                       <span className="text-muted-foreground">{key}.</span>
@@ -86,7 +86,7 @@ export default async function Home() {
           {topHacks ? (
             <div className="flex flex-col gap-y-4 mt-5">
               {topHacks.map((hack, key) => (
-                <Card id={hack.id}>
+                <Card id={hack.id} key={hack.id}>
                   <CardContent className="flex pt-4 items-center gap-x-2 px-6 justify-between">
                     <div className="flex items-center gap-x-2 text-lg">
                       <span className="text-muted-foreground">{key}.</span>
@@ -119,7 +119,7 @@ export default async function Home() {
           {newHacks ? (
             <div className="flex flex-col gap-y-4 mt-5">
               {newHacks.map((hack, key) => (
-                <Card id={hack.id}>
+                <Card id={hack.id} key={key}>
                   <CardContent className="flex pt-4 items-center gap-x-2 px-6 justify-between">
                     <div className="flex items-center gap-x-2 text-lg">
                       <span className="text-muted-foreground">{key}.</span>

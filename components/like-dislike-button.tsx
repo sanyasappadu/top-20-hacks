@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { disLikePost, LikePost } from "@/actions";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 interface LikeAndDislikeButtonProps {
   likesCount: number;
@@ -29,6 +30,7 @@ const LikeAndDisLikeButton = ({
   const [likesNo, setLikesNo] = useState<number>(likesCount);
   const [dislikesNo, setDislikesNo] = useState<number>(dislikesCount);
   const username = localStorage.getItem("username");
+  const router = useRouter()
 
   useEffect(() => {
     if (username && likes.find((like) => like.username === username)) {
@@ -51,7 +53,10 @@ const LikeAndDisLikeButton = ({
       setIsLiked(true);
       setIsDisLiked(false);
       setLikesNo((prev) => prev + 1);
+      setDislikesNo((prev) => prev > 0 ? prev - 1: 0)
       toast("ok");
+      router.refresh()
+      
     }
     setLoading(false);
   };
@@ -65,7 +70,9 @@ const LikeAndDisLikeButton = ({
       setIsDisLiked(true);
       setIsLiked(false);
       setDislikesNo((prev) => prev + 1);
+      setLikesNo((prev) => prev > 0 ? prev-1: 0)
       toast("ok");
+      router.refresh()
     }
   };
   return (
