@@ -23,12 +23,15 @@ const LikeAndDisLikeButton = ({
   likes,
   id,
 }: LikeAndDislikeButtonProps) => {
+
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isDisked, setIsDisLiked] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   // const [username, setUsername] = useState<string>("");
   const [likesNo, setLikesNo] = useState<number>(likesCount);
   const [dislikesNo, setDislikesNo] = useState<number>(dislikesCount);
+
+
   const username = localStorage.getItem("username");
   const router = useRouter()
 

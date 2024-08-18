@@ -12,9 +12,13 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
-import LikeAndDisLikeButton from "@/components/like-dislike-button";
+// import LikeAndDisLikeButton from "@/components/like-dislike-button";
+const DynamicButton = dynamic(() => import('@/components/like-dislike-button'), {
+  ssr: false,
+})
 // English.
 import en from "javascript-time-ago/locale/en";
+import dynamic from "next/dynamic";
 TimeAgo.addDefaultLocale(en);
 
 // Create formatter (English).
@@ -58,7 +62,7 @@ export default async function Home() {
                       <span className="text-muted-foreground">{key}.</span>
                       <div>{hack.content}</div>
                     </div>
-                    <LikeAndDisLikeButton
+                    <DynamicButton
                       likesCount={hack._count.Likes}
                       dislikesCount={hack._count.disLikes}
                       likes={hack.Likes}
@@ -92,7 +96,7 @@ export default async function Home() {
                       <span className="text-muted-foreground">{key}.</span>
                       <div>{hack.content}</div>
                     </div>
-                    <LikeAndDisLikeButton
+                    <DynamicButton
                       likesCount={hack._count.Likes}
                       dislikesCount={hack._count.disLikes}
                       likes={hack.Likes}
@@ -125,7 +129,7 @@ export default async function Home() {
                       <span className="text-muted-foreground">{key}.</span>
                       <div>{hack.content}</div>
                     </div>
-                    <LikeAndDisLikeButton
+                    <DynamicButton
                       likesCount={hack._count.Likes}
                       dislikesCount={hack._count.disLikes}
                       likes={hack.Likes}
